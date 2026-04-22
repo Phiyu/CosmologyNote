@@ -1,0 +1,99 @@
+\documentclass[11pt]{elegantbook}
+
+\title{Cosmology Notes}
+\subtitle{Theory, Observations and Methods}
+
+\author{Hongfei Yu}
+\institute{Department of Astronomy, University of Science and Technology of China}
+\date{\today}
+\version{0.1}
+\bioinfo{Academic Page}{\url{https://phiyu.github.io}}
+
+% \extrainfo{\textcolor{red}{\bfseries Caution: This template will no longer be maintained since January 1st, 2023. However, due to its large user base, maintenance has resumed and the template has been re-released as of 2026.}}
+
+\logo{uphi.png}
+\cover{cover.jpeg}
+
+% modify the color in the middle of titlepage
+\definecolor{customcolor}{RGB}{129, 92, 148}
+\colorlet{coverlinecolor}{customcolor}
+\usepackage{cprotect}
+
+\addbibresource[location=local]{reference.bib} % bib
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+\tableofcontents
+
+\mainmatter
+
+% 
+% ========== Part I: Fundamental Cosmology ==========
+\part{Fundamental Cosmology}
+
+% Ch: Cosmological Principle and FLRW Metric
+\input{1/1-1.tex}
+
+% Ch: Friedmann Equations and LCDM Model
+\input{1/1-2.tex}
+
+
+% ========== Part II: Statistical Cosmology ==========
+\part{Statistical Cosmology}
+
+% Ch: Perturbation Theory
+\input{2/2-1.tex}
+
+% Ch: Correlation Function and Spectrum
+\input{2/2-2.tex}
+
+% Ch: Halo Model and HOD
+\input{2/2-3.tex}
+
+% ========== Part III: Observational Cosmology ==========
+\part{Observational Cosmology}
+
+% Ch: Galaxy Clustering and RSD
+\input{3/3-1.tex}
+
+% Ch: CMB, BAO and SN
+\input{3/3-2.tex}
+
+% Ch: Lensing
+\input{3/3-3.tex}
+
+% Ch: Other Probes
+\input{3/3-4.tex}
+
+% ========== Part IV: Computational Cosmology ==========
+\part{Computational Cosmology}
+
+% Ch: N-body Simulation
+\input{4/4-1.tex}
+
+% Ch: Bayesian Statistics and Monte Carlo Methods
+\input{4/4-2.tex}
+
+% Ch: Emulators and Machine Learning
+\input{4/4-3.tex}
+
+% ========== Part V: Advanced Topics in Cosmology ==========
+\part{Advanced Topics in Cosmology}
+
+% Ch: Early Universe
+\input{5/5-1.tex}
+
+% Ch: Dark Energy and Modified Gravity
+\input{5/5-2.tex}
+
+% Ch: Constraints on Parameters and Models
+\input{5/5-3.tex}
+
+% Ch: Reconstruction of the Universe
+\input{5/5-4.tex}
+
+
+\end{document}

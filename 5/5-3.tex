@@ -5,3 +5,105 @@
 \section{Neutrino Mass and Hierarchy}
 
 \section{Non-Gaussianity}
+\begin{introduction}
+    \item \href{https://arxiv.org/pdf/astro-ph/0005036}{Acoustic Signatures in the Primary Microwave Background Bispectrum}
+    \item \href{https://arxiv.org/pdf/2209.06228}{Squeezing $f_{\rm NL}$ out of the matter bispectrum with consistency relations}
+    \item \href{https://arxiv.org/pdf/1209.2173}{Stochastic Bias from Non-Gaussian Initial Conditions}
+\end{introduction}
+\subsection{Statistical Imprint of Non-Gaussianity}
+
+In this section, we mainly focus on the local-type non-Gaussianity and its imprint in statistical measurements, in contrast of primordial non-Gaussianity during inflation. The non-Gaussianity can be parameterized as:
+\begin{equation}
+    \Phi(\vec{x}) = \phi(\vec{x}) + f_{\rm NL}(\phi^2(\vec{x})-\langle \phi^2 \rangle),
+    \label{ng-gaussian}
+\end{equation}
+where $\Phi$ is the Bardeen potential, $\phi$ is a Gaussian random field, and $f_{\rm NL}$ is the non-Gaussianity parameter. And its Fourier transform is:
+\begin{equation}
+    \Phi(\vec{k}) = \phi(\vec{k}) + f_{\rm NL}\varphi(\vec{k}).
+\end{equation}
+Here $\varphi(\vec{k})$ is the non-linear part of the potential, which is a convolution of $\phi$:
+\begin{equation}
+    \varphi(\vec{k}) = \int \dfrac{\dd^3 k_1}{(2\pi)^3} \phi(\vec{k}_1)\phi(\vec{k}-\vec{k}_1) - (2\pi)^3\delta(\vec{k})\langle \phi^2\rangle.
+\end{equation}
+
+Furthermore, we can write down:
+\begin{equation}
+    \phi(\vec{x}) = \phi_{\rm L}(\vec{x})+\phi_{\rm S}(\vec{x}),
+\end{equation}
+as we divided the gaussian field into {\bf two independent part} -- long-wavelength part and short-wavelength part. Then substitute it into Eq.~\ref{ng-gaussian}, we can get:
+\begin{equation}
+    \Phi(\vec{x}) = \phi_{\rm L}(\vec{x}) + f_{\rm NL}(\phi^2_{\rm L}(\vec{x}) - \langle \phi_{\rm L}^2\rangle ) + (1+2f_{\rm NL}\phi_{\rm L}(\vec{x})) \phi_{\rm S}(\vec{x}) + f_{\rm NL}(\phi_{\rm S}^2(\vec{x}) - \langle  \phi_{\rm S}^2 \rangle ).
+    \label{ng-squeezed}
+\end{equation}
+
+\subsubsection{Squeezed Limit of the Bispectrum}
+One way to detect $f_{\rm NL}$ is to measure the bispectrum $B(k_1,k_2,k_3)$. The bispectrum of the potential $\Phi$ can be calculated as:
+\begin{align*}
+    B_\Phi(k_1,k_2,k_3) & = \langle \Phi(k_1)\Phi(k_2)\Phi(k_3) \rangle \\
+    & = \langle (\phi(k_1) + f_{\rm NL}\varphi(k_1))(\phi(k_2) + f_{\rm NL}(\varphi(k_2)))(\phi(k_3) + f_{\rm NL}(\varphi(k_3))) \rangle\\
+    & \simeq  \langle \phi(k_1)\phi(k_2)\phi(k_3) \rangle + f_{\rm NL} \langle \phi(k_1)\phi(k_2)\varphi(k_3) \rangle + f_{\rm NL} \langle \phi(k_1)\varphi(k_2)\phi(k_3) \rangle + f_{\rm NL} \langle \varphi(k_1)\phi(k_2)\phi(k_3) \rangle\\
+    & = 0 + f_{\rm NL} A_{ij,k} + \mathrm{permutations} \\
+\end{align*}
+where $\simeq$ means we ignore the higher-order terms of $f_{\rm NL}$, and $A_{ij,k} = \langle \phi(k_i)\phi(k_j)\varphi(k_k) \rangle$. We can further calculate $A_{ij,k}$ as:
+\begin{align*}
+    A_{ij,k} & = \int \dfrac{\dd^3 k'}{(2\pi)^3} \langle \phi(k_i)\phi(k_j)\phi(k')\phi(k_k-k') \rangle - (2\pi)^3\delta(k_k)\langle \phi^2\rangle \langle \phi(k_i)\phi(k_j) \rangle \\
+    & = 2\int \dfrac{\dd^3 k'}{(2\pi)^3} P_\phi(k_i)P_\phi(k_j)\delta(\vec{k}_i+\vec{k}_j)\delta(\vec{k}_i+\vec{k}')\delta(\vec{k}_j+\vec{k}_k-\vec{k}') \\
+    & = 2P_\phi(k_i)P_\phi(k_j)\delta(\vec{k}_i+\vec{k}_j+\vec{k}_k).
+\end{align*}
+The second equation is expanded by Wick theorem. Finally, we can write the bispectrum of $\Phi$ as:
+\begin{equation}
+    B_\Phi(k_1,k_2,k_3) = 2f_{\rm NL} [P_\phi(k_1)P_\phi(k_2) + P_\phi(k_2)P_\phi(k_3) + P_\phi(k_3)P_\phi(k_1)]\delta(\vec{k}_1+\vec{k}_2+\vec{k}_3).
+\end{equation}
+
+Squeezed limit of the bispectrum means $q \equiv k_1 \ll k_2\approx k_3 \equiv k$, so the bispectrum in this limit can be written as:
+\begin{equation}
+    B_\Phi(q,k,k) \simeq 4f_{\rm NL} P_\phi(q)P_\phi(k) + \mathscr{O}(q).
+\end{equation}
+In observation, we cannot directly measure the bispectrum of the potential $\Phi$, but we can measure the bispectrum of the matter density contrast $\delta$ using Poisson equation:
+\begin{equation}
+    \delta(k) = \dfrac{2}{3}\dfrac{k^2 T(k)D(z)}{\Omega_{\rm m}H_0^2}\Phi(k) \equiv \alpha(k,z)\Phi(k).
+\end{equation}
+So the squeezed limit of the bispectrum of $\delta$ can be written as:
+\begin{equation}
+    B_\delta(q,k,k) \simeq 4f_{\rm NL} P_\phi(q)P_\phi(k)\alpha(q)\alpha^2(k) = 4f_{\rm NL} \dfrac{P_\delta(q)P_\delta(k)}{\alpha(q)}.
+\end{equation}
+Since $\alpha(q)\propto q^2$ at large scale, we often generally write the squeezed limit with remainder term as:
+\begin{equation}
+    B_\delta(q,k,k) = a_{f_{\rm NL}} \dfrac{P_\delta(q)P_\delta(k)}{q^2T(q)} + \sum_{n=0}^\infty a_{n}\left(\dfrac{q}{k}\right)P_\delta(q)P_\delta(k).
+\end{equation}
+
+After this, we leave out the sub-script $\delta$ for simplicity. A more general form of the squeezed limit is derived in \href{https://arxiv.org/pdf/2209.06228}{Squeezing $f_{\rm NL}$ out of the matter bispectrum with consistency relations}, which gives $a_{f_{\rm NL}}$ as:
+\begin{equation}
+    a_{f_{\rm NL}}  = \dfrac{6f_{\rm NL} \Omega_{\rm m}H_0^2}{D(z)}\dfrac{\pp \log P(k)}{\pp \log \sigma_8}.
+\end{equation}
+Here we do not present the detailed derivation but point out the key equation of squeezed limit:
+\begin{equation}
+    B(q,k) = V\langle \delta(q)P(k|\Phi_{\rm L})\rangle =  V \sum_{q'} \frac{\partial P(k)}{\partial \Phi_{\rm L}(q')} \langle \delta_q \Phi_{\rm L}(q') \rangle = V \frac{\partial P(k)}{\partial \Phi_{L, -q}} \frac{P(q)}{\alpha(q)} + \dots.
+\end{equation}
+here $V = (2\pi)^3 \delta(\vec{0})$ and the second equation is the expansion of $P(k|\Phi_{\rm L})$ in terms of long-wavelength (soft model) $\phi$ as the background.
+
+\subsubsection{Scale-dependent Bias}
+Another more simple imprint caused by non-Gaussianity is the scale-dependent bias, with the same idea of squeezed limit that long-wavelength mode (soft mode) modulate short-wavelength mode (hard mode). 
+
+Consider local statistical $\sigma_8(\vec{x})$, if we ignore the background (soft mode), we can write $\sigma_8$ as:
+\begin{equation}
+    \sigma_8(\vec{x}) = (1+2f_{\rm NL}\phi_{\rm L})\bar{\sigma}_8.
+\end{equation}
+This is derived from Eq.~\ref{ng-squeezed}. Then the halo bias can be written as:
+\begin{equation}
+    \delta_{\rm h} \equiv \frac{\delta n_{\rm h}}{\bar{n}_{\rm h}} = \frac{\partial \ln n_{\rm h}}{\partial \delta} \delta + \frac{\partial \ln n_{\rm h}}{\partial \ln \sigma_8} \frac{\delta \sigma_8}{\sigma_8}.
+\end{equation}
+Suppose $b_{\rm h} = \dfrac{\pp \ln n_{\rm h}}{\pp \delta_{\rm L}}$ and $\beta_{\rm h} = 2\dfrac{\pp \ln n_{\rm h}}{\pp \ln \sigma_8}$ are the Gaussian bias and non-Gaussian bias, we can write the halo bias as:
+\begin{equation}
+    \delta_{\rm h} = \left[b_{\rm h}+\beta_{\rm h}\dfrac{f_{\rm NL}}{\alpha}\right] \delta_{\rm L},
+\end{equation}
+which suits for the large scale limit.
+
+\href{https://arxiv.org/pdf/1209.2173}{Stochastic Bias from Non-Gaussian Initial Conditions} shows that the equation above is not exact if the inflation is not a single field, and there is an extra stochastic bias term $\epsilon$ for a general conclusion:
+\begin{equation}
+    \delta_{\rm h} = \left[b_{\rm h}+\beta_{\rm h}\dfrac{f_{\rm NL}}{\alpha}\right] \delta_{\rm L} + \epsilon.
+\end{equation}
+
+
+
+\subsection{Primordial Non-Gaussianity during Inflation}

@@ -1,8 +1,189 @@
 \chapter{Lensing}
 
+\begin{introduction}
+    \item \textbf{Modern Cosmology} Chapter 13
+    \item \href{https://oguri.github.io/lectures/2020ssgc/ssgc2020.pdf}{Introduction to weak gravitational lensing}
+    \item \href{https://arxiv.org/pdf/2501.07938}{Weak Gravitational Lensing}
+\end{introduction}
+
+Lensing in cosmology is a phenomenon caused by gravity bending the path of light as it travels through the universe. Gravitational lensing gives us a powerful tool to probe the distribution of matter -- \textbf{not only galaxy (or baryonic) matter but also dark matter} -- in the universe. We can observe lensing effects in the distorted shapes of galaxies (weak lensing), the formation of multiple images of distant objects (strong lensing), and the anisotropies in CMB.
+
+
 \section{Gravitational Lensing}
 
+Before theoretically calculating the gravitational lensing effects, we can firstly introduce three significant examples or applications of lensing:
+\begin{enumerate}
+    \item \textbf{Time Delay}: Light rays emitted from the same source in the same time can be detected from different directions due to the lensing effect at different times. The delay turns out to depend on Hubble constant $H_0$, i.e. lensing can be used to measure $H_0$.
+    
+    \item \textbf{Magnification}: When a compact object (e.g. a star) passes in front of a background source, it can cause a temporary increase in the brightness of the source due to lensing, which is called microlensing. This effect is used to constrain the contribution of massive compact halo objects (MACHOs) to the dark matter.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.5\textwidth]{figure/bulletcluster.jpg}
+        \caption{The bullet cluster, the mass distribution from lensing is shown as blue, while the X-ray emission from hot gas is shown as pink.}
+    \end{figure}
+    
+    Another example of magnification is the bullet cluster, which has two different possible distribution of mass from the lensing effect and from the X-ray emission. This provides a strong evidence for the existence of collisionless dark matter.
+
+    \item \textbf{Shape distortion}: The most important aspect of lensing is weak lensing, which causes slight distortions in the shapes of background galaxies. By statistically analyzing these distortions, we can map the distribution of dark matter and study the large-scale structure of the universe.
+\end{enumerate}
+
 \subsection{Weak Lensing}
+
+\subsubsection{Describe Galaxy}
+To treat the lensing effect on galaxy distribution, it's hard to remap the galaxy from the observed to the true position. Instead, we can directly calculate the lensing effect on the galaxy shape, which is called weak lensing. 
+
+In the simplest case, we \textbf{statistically}\footnote{It's a great important idea that we can only probe weak lensing via statistics.} think the galaxy shape as circular, and the lensing effect will distort it into an ellipse. So the important part becomes quantify galaxy shape. Since lensing is the integral effect shown in the $2\mathrm{D}$ spherical sky coordinate $\vec{\theta} = (\theta_1,\theta_2)$, we can use the set of second moments of its image as the simplest measurement:
+\begin{equation}
+    q_{ij} = \langle \theta_i \theta_j \rangle_{I^{\rm obs}} = \frac{\int d^2\theta I(\boldsymbol{\theta}) \theta_i \theta_j}{\int d^2\theta I(\boldsymbol{\theta})},
+\end{equation}
+here we choose the origin such that $\langle \vec{\theta} \rangle_{I_{\rm obs}} = 0$ where $\vec{\theta}$ is the image position. Since $q_{ij}$ is a symmetric $2\times 2$ matrix, we can write it as:
+\begin{equation}
+    q_{ij} = \frac{1}{2}q \begin{pmatrix}
+        1+\epsilon_1 & \epsilon_2 \\
+        \epsilon_2 & 1-\epsilon_1
+    \end{pmatrix},
+\end{equation}
+where $q = \operatorname{Tr}[q_{ij}]$ refers to the size of the galaxy, and $\epsilon_1$ and $\epsilon_2$ refer to the shape distortion, with circular shape corresponding to $\epsilon_1 = \epsilon_2 = 0$. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = 0.7\textwidth]{figure/lenseq.png}
+    \caption{Coordinates to describe the galaxy position.}
+\end{figure}
+
+Then let us derive the effect of lensing on the galaxy shape. If we denote the true galaxy position as $\vec{\beta}$, and the deflection angel caused by mass distribution is $\vec{\alpha}(\vec{\theta})$, i.e.
+\begin{equation}
+    \vec{\beta} = \vec{\theta} - \vec{\alpha}(\vec{\theta}).
+    \label{lensangle}
+\end{equation}
+
+In that case, we can describe the shape distortion by describe a galaxy with true scale $\delta \vec{\beta}$ and observed scale $\delta \vec{\theta}$:
+\begin{equation}
+    \begin{cases}
+        \vec{\beta}= \vec{\theta}-\vec{\alpha}(\vec{\theta})\\
+        \vec{\beta}+\delta \vec{\beta} = \theta + \delta \vec{\theta} - \vec{\alpha}(\vec{\theta}+\delta \vec{\theta})
+    \end{cases}\Rightarrow \delta \vec{\beta} = \mathbf{A}\delta \vec{\theta},
+\end{equation}
+where the de-lensing matrix $A_{ij}$ is
+\begin{equation}
+    A_{ij} = \delta_{ij} - \dfrac{\partial \alpha_i}{\partial \theta_i},
+    \label{delensing}
+\end{equation}
+here we use Taylor expansion for $\vec{\alpha}(\vec{\theta}+\delta \vec{\theta})$ and ignore $\mathcal{O}\left((\delta \vec{\theta})^2\right)$ since galaxy images are always very small.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = 0.7\textwidth]{figure/lensshear.png}
+    \caption{The shear from $\delta \vec{\beta}$ to $\delta \vec{\theta}$ caused by lens.}
+\end{figure}
+
+
+\subsubsection{Contribution of Gravity}
+Now we can consider a first-order homogeneous perturbation of the metric:
+\begin{equation}
+    \dd s^2 = -\left(1+\dfrac{2 \Psi}{c^2}\right)c^2 \dd t^2 +a^2(t)\left(1-\dfrac{2\Phi}{c^2}\right)\dd l^2.
+\end{equation}
+It is trivial that the relation between the$3\mathrm{D}$ spatial coordinates and the $2\mathrm{D}$ angular coordinates is:
+\begin{equation}
+    \begin{cases}
+        \vec{x}_{\rm true} = (\vec{\beta}, 1)\chi,\\
+        \vec{x}_{\rm obs} = (\vec{\theta}, 0)\chi,
+    \end{cases}
+\end{equation}
+here $\vec{\theta}$ and $\vec{\beta}$ are the angular coordinates of the observed and true position, respectively, same as Eq.~\ref{lensangle}. And $\chi$ is the comoving distance. With assuming $x^3 (z)$ is the line of sight direction, we can write $\chi = x^3(z)$.
+
+Then the true angle $\vec{\theta}$ can be calculated by integrating the transverse components' (here refers to $x,y$) derivation of $\chi$:
+\begin{equation}
+    \theta^i = \dfrac{x^i_{\perp}}{\chi} = \dfrac{1}{\chi} \int \dd \chi \dfrac{\dd x^i_{\perp}}{\dd \chi} = \beta^i + 2\int_0^\chi \dd \chi' \pp_i \Phi(\vec{\theta}, \chi')\left(1-\dfrac{\chi'}{\chi}\right).
+\end{equation}
+The second equation can be derived from general relativity, and $\beta^i$ is a determined integral constant. Finally, we can write the deflection angle $\vec{\alpha}$ as:
+\begin{equation}
+    \vec{\alpha} = \dfrac{2}{c^2}\int_0^\chi \dd \chi' \pp_i \Phi(\vec{\theta}, \chi')\left(1-\dfrac{\chi'}{\chi}\right).
+\end{equation}
+While we can also define the lensing potential $\phi_{\rm L}$ as:
+\begin{equation}
+    \phi_{\rm L} = \dfrac{2}{c^2}\int_0^\chi \dfrac{\dd \chi'}{\chi} \Phi(\vec{\theta}, \chi')\left(1-\dfrac{\chi'}{\chi}\right),
+    \label{lensingpotential}
+\end{equation}
+so the deflection angle can be written as $\vec{\alpha} = \dfrac{\pp \phi_{\rm L}}{\pp \vec{\theta}}$.
+
+\subsubsection{Thin Lens Approximation}
+In another way, General relativity gives the deflection of light by a mass-point $M$ under \textit{Born Approximation}:
+\begin{equation}
+    \delta \theta = \dfrac{4GM}{bc^2},
+\end{equation}
+with $b$ is the impact parameter. More precisely, we can write down the formal equation of $\delta \theta$ as below:
+\begin{equation}
+    \delta \theta = -\dfrac{2}{c^2}\int \nabla_{\bot} \Phi\;\dd r.
+    \label{deltatheta}
+\end{equation}
+
+
+Now please remember the Fig.~\ref{lenscoordinate}, all the calculation below is under the notion is that figure.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = 0.7\textwidth]{figure/lensing.png}
+    \caption{Coordinates we use.}
+    \label{lenscoordinate}
+\end{figure}
+
+If we think the physical scale of the lens is much smaller than the distance between observer, lens and source, then we can treat is as a \textbf{lens plane} perpendicular with the line of sight. We denote the physical position of the lens plane by $\vec{\xi}$ and call the assumption above \textit{thin lens approximation}. For a plane, we can consider its surface density:
+\begin{equation}
+    \Sigma(\vec{\xi}) = \int \dd z \rho(\vec{\xi},z),
+\end{equation}
+here $z$ is the position in the line of sight.
+
+We can adapt the thin lens approximation with Born Approximation:
+\[
+    \dd M = \Sigma(\vec{\xi})\dd^2 \xi,\quad b = \left|\vec{\xi}-\vec{\xi}'\right|,
+\]
+and the direction vector $\dfrac{\vec{\xi}-\vec{\xi}'}{|\vec{\xi}-\vec{\xi}'|}$, we finally get:
+\begin{equation}
+    \delta \vec{\theta} = \dfrac{4G}{c^2}\int \dfrac{(\vec{\xi}-\vec{\xi}')\Sigma(\vec{\xi}')}{\left|\vec{\xi}-\vec{\xi}'\right|^2}\;\dd ^2 \vec{\xi}.
+    \label{deflaction}
+\end{equation}
+
+From Fig.~\ref{lenscoordinate}, we can geometrically calculate:
+\[
+    \vec{\alpha} = \dfrac{D_{\rm ls}}{D_{\rm s}}\delta\vec{\theta},\quad \vec{\xi} = D_{\rm l}\vec{\theta}.
+\]
+Substituting the relation above into Eq.~\ref{deflaction}, we have:
+\begin{equation}
+    \vec{\alpha} = \dfrac{4G}{c^2}\dfrac{D_{\rm ls}}{D_{\rm l}D_{\rm s}}\int \dfrac{(\vec{\theta}-\vec{\theta}')\Sigma(D_{\rm l}\vec{\theta}')}{\left|\vec{\theta}-\vec{\theta}'\right|^2}\;\dd ^2 \vec{\theta} = \dfrac{1}{\pi}\int\kappa(\vec{\theta})\dfrac{(\vec{\theta}-\vec{\theta}')}{\left|\vec{\theta}-\vec{\theta}'\right|^2}\;\dd ^2  \theta.
+\end{equation}
+Here $\kappa(\vec{\theta})$ is the \textbf{convergence field}, referring to the dimensionless surface mass density of lens:
+\begin{equation}
+    \kappa(\vec{\theta}) = \dfrac{\Sigma(\vec{\theta})}{\Sigma_{\rm cirt}},\quad \Sigma_{\rm cirt} = \dfrac{c^2}{4\pi G}\dfrac{D_{\rm os}}{D_{\rm l}D_{\rm s}}.
+\end{equation}
+
+Also, substituting the relation to Eq.~\ref{deltatheta}, we can derive the \textbf{lensing potential} $\phi_{\rm L}$:
+\begin{equation}
+    \vec{\alpha}(\vec{\theta}) = \dfrac{\pp}{\pp \vec{\theta}} \phi_{\rm L} = \dfrac{\pp}{\pp \vec{\theta}}\left[ \dfrac{2}{c^2}\dfrac{D_{\rm ls}}{D_{\rm l}D_{\rm s}}\int \Phi(D_{\rm l}\vec{\theta},z)\;\dd z\right].
+\end{equation}
+This equation is consistent with the Eq.~\ref{lensingpotential} we derived from the first-order homogeneous perturbation of the metric, with $\dfrac{D_{\rm ls}}{D_{\rm l}D_{\rm s}}\to \dfrac{\chi-\chi'}{\chi\chi'}$.
+
+\subsubsection{Convergence and Shear}
+Now review Eq.~\ref{delensing}, the trace of $\mathbf{A}$ is
+\[
+    \operatorname{Tr}[A_{ij}] = 2-\dfrac{\pp \alpha_1}{\pp \theta_1} - \dfrac{\pp \alpha_2}{\pp \theta_2} = 2-\kappa(\vec{\theta}),
+\]
+so we can rewrite $A_{ij}$:
+\begin{equation}
+    A_{ij} = \begin{pmatrix}
+        1-\kappa -\gamma_1 & -\gamma_2 \\ -\gamma_2 & 1-\kappa +\gamma_1
+    \end{pmatrix}.
+\end{equation}
+
+\subsubsection{Convergence as the projected matter density}
+From the definition of lensing potential $\phi_{\rm L}$, we can derive the convergence $\kappa$ as:
+\begin{equation}
+    \kappa = \dfrac{1}{2}\dfrac{\partial ^2\phi_{\rm L}}{\partial \theta^2} = \dfrac{1}{c^2}\int_0^\chi \dd \chi' \dfrac{\chi'(\chi-\chi')}{\chi}\nabla^2 \Phi(\vec{\theta},\chi') = \dfrac{3H_0^2\Omega_{\rm m}}{2c^2}\int_0^\chi \dd \chi' \dfrac{\chi'(\chi-\chi')}{\chi}\dfrac{\delta(\vec{\theta},\chi')}{a}.
+\end{equation}
+This equation shows that the convergence $\kappa$ is essentially a weighted projection of the matter density contrast $\delta$ along the line of sight.
+
+
 
 \subsection{Strong Lensing}
 

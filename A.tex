@@ -1,0 +1,23 @@
+\chapter{Math for Sphere Projection}
+
+\begin{introduction}
+    \item \href{https://arxiv.org/pdf/1302.1830}{Three-dimensional Fourier transforms, integrals of spherical Bessel functions, and novel delta function identities}
+\end{introduction}
+
+\section{Fourier Transform in Spherical Coordinates}
+
+For an isotropic function $f(\vec{r}) = f(r)$, the Fourier transform can be simplified as:
+\begin{align*}
+    \tilde{f}(\vec{k}) & = \int \dd^3 r f(\vec{r}) e^{-i\vec{k}\cdot \vec{r}} \\
+    & = \int_0^\infty r^2 \dd r f(r) \int_0^\pi \sin\theta \dd \theta e^{-ikr\cos\theta} \int_0^{2\pi} \dd \phi \\
+    & = 2\pi \int_0^\infty r^2 \dd r f(r) \int_{-1}^{1} \dd (\cos\theta) e^{-ikr\cos\theta} \\
+    & = 4\pi \int_0^\infty r^2 \dd r f(r) \dfrac{\sin(kr)}{kr} \\
+    & = 4\pi \int_0^\infty r^2 \dd r f(r) j_0(kr),
+\end{align*}
+where $j_0(kr) = \sin(kr)/(kr)$ is the spherical Bessel function of order 0. The inverse Fourier transform can be written as:
+\begin{align*}
+    f(\vec{r}) & = \int \dfrac{\dd^3 k}{(2\pi)^3} \tilde{f}(\vec{k}) e^{i\vec{k}\cdot \vec{r}} \\
+    & = \int_0^\infty \dfrac{k^2 \dd k}{(2\pi)^3} \tilde{f}(k) \int_0^\pi \sin\theta \dd \theta e^{ikr\cos\theta} \int_0^{2\pi} \dd \phi \\
+    & = \dfrac{1}{2\pi^2} \int_0^\infty k^2 \dd k \tilde{f}(k) \dfrac{\sin(kr)}{kr} \\
+    & = \dfrac{1}{2\pi^2} \int_0^\infty k^2 \dd k \tilde{f}(k) j_0(kr).
+\end{align*}

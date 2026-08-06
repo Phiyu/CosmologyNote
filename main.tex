@@ -18,6 +18,9 @@
 \definecolor{customcolor}{RGB}{129, 92, 148}
 \colorlet{coverlinecolor}{customcolor}
 \usepackage{cprotect}
+\renewcommand{\vec}{\boldsymbol}
+\usepackage{physics}
+\newcommand{\pp}{\partial}
 
 \addbibresource[location=local]{reference.bib} % bib
 
@@ -31,29 +34,31 @@
 \mainmatter
 
 % 
-% ========== Part I: Fundamental Cosmology ==========
-\part{Fundamental Cosmology}
+% % ========== Part I: Fundamental Cosmology ==========
+% \part{Fundamental Cosmology}
 
-% Ch: Cosmological Principle and FLRW Metric
-\input{1/1-1.tex}
+% % Ch: Cosmological Principle and FLRW Metric
+% \input{1/1-1.tex}
 
-% Ch: Friedmann Equations and LCDM Model
-\input{1/1-2.tex}
+% % Ch: Friedmann Equations and LCDM Model
+% \input{1/1-2.tex}
 
 
-% ========== Part II: Statistical Cosmology ==========
-\part{Statistical Cosmology}
+% % ========== Part II: Statistical Cosmology ==========
+% \setcounter{part}{1}
+% \part{Statistical Cosmology}
 
-% Ch: Perturbation Theory
-\input{2/2-1.tex}
+% % Ch: Perturbation Theory
+% \input{2/2-1.tex}
 
-% Ch: Correlation Function and Spectrum
-\input{2/2-2.tex}
+% % Ch: Correlation Function and Spectrum
+% \input{2/2-2.tex}
 
-% Ch: Halo Model and HOD
-\input{2/2-3.tex}
+% % Ch: Halo Model and HOD
+% \input{2/2-3.tex}
 
 % ========== Part III: Observational Cosmology ==========
+\setcounter{part}{2}
 \part{Observational Cosmology}
 
 % Ch: Galaxy Clustering and RSD
@@ -68,19 +73,21 @@
 % Ch: Other Probes
 \input{3/3-4.tex}
 
-% ========== Part IV: Computational Cosmology ==========
-\part{Computational Cosmology}
+% % ========== Part IV: Computational Cosmology ==========
+\setcounter{part}{3}
+% \part{Computational Cosmology}
 
-% Ch: N-body Simulation
-\input{4/4-1.tex}
+% % Ch: N-body Simulation
+% \input{4/4-1.tex}
 
-% Ch: Bayesian Statistics and Monte Carlo Methods
-\input{4/4-2.tex}
+% % Ch: Bayesian Statistics and Monte Carlo Methods
+% \input{4/4-2.tex}
 
-% Ch: Emulators and Machine Learning
-\input{4/4-3.tex}
+% % Ch: Emulators and Machine Learning
+% \input{4/4-3.tex}
 
 % ========== Part V: Advanced Topics in Cosmology ==========
+\setcounter{part}{4}
 \part{Advanced Topics in Cosmology}
 
 % Ch: Early Universe
@@ -94,6 +101,12 @@
 
 % Ch: Reconstruction of the Universe
 \input{5/5-4.tex}
+
+% ========== Appendix ==========
+\appendix
+
+% Ch: Math for Sphere Projection
+\input{A.tex}
 
 
 \end{document}
